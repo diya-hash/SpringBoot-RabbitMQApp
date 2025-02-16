@@ -18,4 +18,16 @@ public class RabbitMQDirectExchangeProducer {
 		}
 		return "messages sent successfully";
 	}
+	public String sendMessageToTV(List<String> messages) {
+		for(String message : messages) {
+			rabbitTemplate.convertAndSend("Direct-Exchange", "tv", message);
+		}
+		return "messages sent successfully";
+	}
+	public String sendMessageToAC(List<String> messages) {
+		for(String message : messages) {
+			rabbitTemplate.convertAndSend("Direct-Exchange", "ac", message);
+		}
+		return "messages sent successfully";
+	}
 }
