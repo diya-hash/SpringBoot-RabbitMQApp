@@ -9,27 +9,39 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQDirectExchangeProducer;
 
 @RestController
-@RequestMapping("/DE/messages")
+@RequestMapping
 public class DEMessageController {
 	private final RabbitMQDirectExchangeProducer deProducer;
-	
-	
+
 	public DEMessageController(RabbitMQDirectExchangeProducer deProducer) {
 		this.deProducer = deProducer;
 	}
-	
-	@PostMapping
+
+	@PostMapping("/DE/mobile/messages")
 	public String sendMessageToMobile(@RequestBody MessageRequest request) {
 		deProducer.sendMessageToMobile(request.getMessages());
 		return "message sent to Mobile Queue";
 	}
-	
-	static class MessageRequest{
+
+	@PostMapping("/DE/tv/messages")
+	public String sendMessageToTV(@RequestBody MessageRequest request) {
+		deProducer.sendMessageToTV(request.getMessages());
+		return "message sent to TV Queue";
+	}
+
+	@PostMapping("/DE/ac/messages")
+	public String sendMessageToAC(@RequestBody MessageRequest request) {
+		deProducer.sendMessageToAC(request.getMessages());
+		return "message sent to AC Queue";
+	}
+
+	static class MessageRequest {
 		private List<String> messages;
-		
-		public List<String>getMessages() {
+
+		public List<String> getMessages() {
 			return messages;
 		}
+
 		public void setMessages(List<String> messages) {
 			this.messages = messages;
 		}
