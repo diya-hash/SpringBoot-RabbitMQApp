@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQTEProducer;
 
 @RestController
-@RequestMapping("/TE")
+@RequestMapping("/api/TE")
 public class TEMessageController {
 	private final RabbitMQTEProducer teProducer;
 

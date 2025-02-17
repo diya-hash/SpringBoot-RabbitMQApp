@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQDEProducer;
 
 @RestController
-@RequestMapping("/DE")
+@RequestMapping("/api/direct-exchange/")
 public class DEMessageController {
 	private final RabbitMQDEProducer deProducer;
 

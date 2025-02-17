@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQFEProducer;
 
 @RestController
-@RequestMapping("/FE/messages")
+@RequestMapping("/api/fanout-exchange/messages")
 public class FEMessageController {
 	private final RabbitMQFEProducer feProducer;
 
