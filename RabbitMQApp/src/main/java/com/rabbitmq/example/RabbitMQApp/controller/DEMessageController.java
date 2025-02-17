@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQDirectExchangeProducer;
+import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQDEProducer;
 
 @RestController
 @RequestMapping("/DE")
 public class DEMessageController {
-	private final RabbitMQDirectExchangeProducer deProducer;
+	private final RabbitMQDEProducer deProducer;
 
-	public DEMessageController(RabbitMQDirectExchangeProducer deProducer) {
+	public DEMessageController(RabbitMQDEProducer deProducer) {
 		this.deProducer = deProducer;
 	}
 

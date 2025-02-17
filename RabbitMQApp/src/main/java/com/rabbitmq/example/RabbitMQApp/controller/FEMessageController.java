@@ -7,29 +7,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQFanoutExchangeProducer;
+import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQFEProducer;
 
 @RestController
 @RequestMapping("/FE/messages")
 public class FEMessageController {
-	private final RabbitMQFanoutExchangeProducer feProducer;
-	
-	
-	public FEMessageController(RabbitMQFanoutExchangeProducer feProducer) {
+	private final RabbitMQFEProducer feProducer;
+
+	public FEMessageController(RabbitMQFEProducer feProducer) {
 		this.feProducer = feProducer;
 	}
-	
+
 	@PostMapping
 	public String sendMessageToFEQueues(@RequestBody MessageRequest request) {
 		feProducer.sendMessageToFEQueues(request.getMessages());
 		return "message sent to all fanout Queues";
 	}
-	static class MessageRequest{
+
+	static class MessageRequest {
 		private List<String> messages;
-		
-		public List<String>getMessages() {
+
+		public List<String> getMessages() {
 			return messages;
 		}
+
 		public void setMessages(List<String> messages) {
 			this.messages = messages;
 		}

@@ -6,10 +6,10 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RabbitMQDirectExchangeProducer {
+public class RabbitMQDEProducer {
 	private final RabbitTemplate rabbitTemplate;
 
-	public RabbitMQDirectExchangeProducer(RabbitTemplate rabbitTemplate) {
+	public RabbitMQDEProducer(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
 	}
 
