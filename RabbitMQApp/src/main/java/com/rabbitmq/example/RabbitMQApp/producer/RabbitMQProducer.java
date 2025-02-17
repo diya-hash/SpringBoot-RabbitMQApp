@@ -9,17 +9,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RabbitMQProducer {
-	
+
 	private final RabbitTemplate rabbitTemplate;
 	private final String queueName = "Queue-1";
-	
-    public RabbitMQProducer(RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
-	public String sendMessage(List<String> messages) {
-		for(String message : messages) {
+
+	public RabbitMQProducer(RabbitTemplate rabbitTemplate) {
+		this.rabbitTemplate = rabbitTemplate;
+	}
+
+	public void sendMessage(List<String> messages) {
+		for (String message : messages) {
 			rabbitTemplate.convertAndSend(queueName, message);
 		}
-		return "messages sent successfully";
 	}
 }

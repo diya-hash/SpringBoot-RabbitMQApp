@@ -8,26 +8,27 @@ import org.springframework.stereotype.Service;
 @Service
 public class RabbitMQDirectExchangeProducer {
 	private final RabbitTemplate rabbitTemplate;
-	
+
 	public RabbitMQDirectExchangeProducer(RabbitTemplate rabbitTemplate) {
 		this.rabbitTemplate = rabbitTemplate;
 	}
-	public String sendMessageToMobile(List<String> messages) {
-		for(String message : messages) {
+
+	public void sendMessageToMobile(List<String> messages) {
+		for (String message : messages) {
 			rabbitTemplate.convertAndSend("Direct-Exchange", "mobile", message);
 		}
-		return "messages sent successfully";
 	}
-	public String sendMessageToTV(List<String> messages) {
-		for(String message : messages) {
+
+	public void sendMessageToTV(List<String> messages) {
+		for (String message : messages) {
 			rabbitTemplate.convertAndSend("Direct-Exchange", "tv", message);
 		}
-		return "messages sent successfully";
+
 	}
-	public String sendMessageToAC(List<String> messages) {
-		for(String message : messages) {
+
+	public void sendMessageToAC(List<String> messages) {
+		for (String message : messages) {
 			rabbitTemplate.convertAndSend("Direct-Exchange", "ac", message);
 		}
-		return "messages sent successfully";
 	}
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rabbitmq.example.RabbitMQApp.producer.RabbitMQDirectExchangeProducer;
 
 @RestController
-@RequestMapping
+@RequestMapping("/DE")
 public class DEMessageController {
 	private final RabbitMQDirectExchangeProducer deProducer;
 
@@ -17,19 +17,19 @@ public class DEMessageController {
 		this.deProducer = deProducer;
 	}
 
-	@PostMapping("/DE/mobile/messages")
+	@PostMapping("/mobile/messages")
 	public String sendMessageToMobile(@RequestBody MessageRequest request) {
 		deProducer.sendMessageToMobile(request.getMessages());
 		return "message sent to Mobile Queue";
 	}
 
-	@PostMapping("/DE/tv/messages")
+	@PostMapping("/tv/messages")
 	public String sendMessageToTV(@RequestBody MessageRequest request) {
 		deProducer.sendMessageToTV(request.getMessages());
 		return "message sent to TV Queue";
 	}
 
-	@PostMapping("/DE/ac/messages")
+	@PostMapping("/ac/messages")
 	public String sendMessageToAC(@RequestBody MessageRequest request) {
 		deProducer.sendMessageToAC(request.getMessages());
 		return "message sent to AC Queue";
