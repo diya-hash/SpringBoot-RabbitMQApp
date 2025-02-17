@@ -14,7 +14,7 @@ Dependencies:
 
 # Manual Configuration
 
-The queues and bindings were created in the RabbiutMQ Console.
+The queues and bindings were created in the RabbitMQ Console.
 Queues:
 Direct-Exchange
 Fanout-Exchange
